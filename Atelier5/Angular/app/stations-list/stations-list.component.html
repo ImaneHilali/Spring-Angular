@@ -1,0 +1,31 @@
+<div>
+  <div>
+    <h2>Add Station</h2>
+    <form (submit)="addStation()">
+      <label>Nom: <input [(ngModel)]="newStation.nom" name="nom" required></label><br>
+      <label>Ville: <input [(ngModel)]="newStation.ville" name="ville" required></label><br>
+      <label>Adresse: <input [(ngModel)]="newStation.adresse" name="adresse" required></label><br><br>
+      <button type="submit">Add Station</button>
+    </form>
+  </div>
+
+  <h2>List of Stations</h2>
+  <ul>
+    <li *ngFor="let station of stations">
+      {{ station.nom }} ,
+      {{ station.ville }},
+      {{ station.adresse }}
+      <button (click)="editStation(station)">Edit</button>
+      <button (click)="station.id !== null ? deleteStation(station.id) : undefined">Delete</button>
+    </li>
+  </ul>
+  <div *ngIf="isEditing">
+    <h2>Edit Station</h2>
+    <form (submit)="updateStation()">
+      <label>Nom: <input [(ngModel)]="editStationData.nom" name="nom" required></label><br>
+      <label>Ville: <input [(ngModel)]="editStationData.ville" name="ville" required></label><br>
+      <label>Adresse: <input [(ngModel)]="editStationData.adresse" name="adresse" required></label><br>
+      <button type="submit">Update</button>
+    </form>
+  </div>
+

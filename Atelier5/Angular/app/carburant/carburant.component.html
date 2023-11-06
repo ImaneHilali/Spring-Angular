@@ -1,0 +1,26 @@
+<div>
+  <div>
+    <h2>Add Carburant</h2>
+    <form (submit)="addCarburant()">
+      <label>Nom: <input [(ngModel)]="newCarburant.nom" name="nom" required></label><br>
+      <label>Description: <input [(ngModel)]="newCarburant.description" name="description" required></label><br>
+       <button type="submit">Add Carburant</button>
+    </form>
+  </div>
+  
+  <ul>
+    <li *ngFor="let carburant of carburaunts">
+      {{ carburant.nom }} - {{ carburant.description }}
+      <button (click)="editCarburant(carburant)">Edit</button>
+      <button (click)="carburant.id !== null ? deleteCarburant(carburant.id): undefined">Delete</button>
+    </li>
+  </ul>
+  <div *ngIf="isEditing">
+    <h2>Edit Carburant</h2>
+    <form (submit)="updateCarburant()">
+      <label>Nom: <input [(ngModel)]="editCarburantData.nom" name="nom" required></label><br>
+      <label>Description: <input [(ngModel)]="editCarburantData.description" name="ville" required></label><br>
+      <button type="submit">Update</button>
+    </form>
+  </div>
+</div>  

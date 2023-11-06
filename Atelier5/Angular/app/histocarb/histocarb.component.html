@@ -1,0 +1,26 @@
+<div>
+  <div>
+    <h2>Add HistoCarb</h2>
+    <form (submit)="addHistoCarb()">
+      <label>Date: <input [(ngModel)]="newHistoCarb.date" name="date" required></label><br>
+      <label>Prix: <input [(ngModel)]="newHistoCarb.prix" name="prix" required></label><br>
+       <button type="submit">Add HistoCarb</button>
+    </form>
+  </div>
+  
+  <ul>
+    <li *ngFor="let histoCarb of histoCarbs">
+      {{ histoCarb.date }} - {{ histoCarb.prix }}
+      
+      <button (click)="editHistoCarb(histoCarb)">Edit</button>
+     </li>
+  </ul>
+  <div *ngIf="isEditing">
+    <h2>Edit HistoCarb</h2>
+    <form (submit)="updateHistoCarb()">
+      <label>Date: <input [(ngModel)]="editHistoCarbData.date" name="date" required></label><br>
+      <label>Prix: <input [(ngModel)]="editHistoCarbData.prix" name="prix" required></label><br>
+      <button type="submit">Update</button>
+    </form>
+  </div>
+ 
